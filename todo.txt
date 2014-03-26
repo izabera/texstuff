@@ -1,0 +1,3 @@
+semiretta U intervallo non distante quanto la sua misura?
+semiretta U unione finita di intervalli?
+semiretta U compatto?

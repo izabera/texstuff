@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+%\usepackage{fontspec}
+\usepackage{amssymb, amsfonts, amsmath, amsthm}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+
+\newcommand\rea{\mathbb R}
+\newcommand\ins[1]{\mathbf #1}
+\newcommand\pom{di Pompeiu}
+\newcommand\inte[3]{\int\limits_{#1}^{#2}\!#3(x)\text dx}
+\newcommand\intes[2]{\int\limits_{#1}\!#2\text dx}
+
+\newtheorem*{prop*}{Proposizione}
+\newtheorem{prop}{Proposizione}
+\newtheorem{teo}{Teorema}
+\theoremstyle{definition}
+\newtheorem*{defn}{Definizione}
+\newtheorem{esem}{Esempio}
+
+%\setmainfont[Ligatures=TeX]{Linux Libertine O}
+%\setdefaultlanguage{italian}
+
+\title{Sottoinsiemi \pom{} di $\rea$}% di misura infinita}
+\author{Isabella Bosia}
+\date{}
+
+\begin{document}
+\maketitle
+%()&
+In questo documento, $\Sigma(\ins A)$ è l'insieme delle traslazioni e delle riflessioni $\sigma$ di $\ins A$. $\ins A+t$ indicherà l'insieme $\ins A$ traslato di $t$. 
+\begin{defn}$\ins A\subseteq\rea$ è \pom{} se data $f:\rea\to\rea$ continua tale che $\intes {\sigma(\ins A)} f=k\in\rea$ non dipende da  $\sigma\in\Sigma$ si ha che $f$ è costante.
+\end{defn}
+
+Sia $\ins A$ un insieme di misura infinita, sia $\sigma(\ins A)$ una sua traslazione di $t$ tale che $\mu(\ins A\cap\sigma(\ins A))=0$ (dove $\mu$ è la misura di Lebesgue) e sia $\ins B=\ins A\cup\sigma(\ins A)$.
+\begin{teo}\label{teo:B-pom-sse-A-pom}$\ins B$ è \pom{} $\iff$ $\ins A$ è \pom{}.
+\end{teo}
+\begin{proof}Dimostriamo prima che $\ins B$ è \pom{}$\implies\ins A$ è \pom{}.
+
+Supponiamo che $\ins A$ non sia \pom{}. Allora $\exists g$ non costante tale che $\intes {\sigma(\ins A)}{g(x)}=k$ non dipende da $\sigma$.
+
+Poiché $\ins A$ e $\ins A+t$ sono quasi disgiunti, abbiamo che
+\begin{equation}\label{eq:quasi-disgiunti}
+\intes{\ins B}{g(x)}=\intes{\ins A}{g(x)}+\intes{\ins A+t} {g(x)}=2k
+\end{equation}
+Quindi $\exists g$ non costante con integrale costante sulle traslazioni di $\ins B$, il che contraddice il fatto che $\ins B$ è \pom{}.
+
+Si noti che questa implicazione non è limitata al caso in cui $\ins A$ sia di misura infinita.
+
+Vediamo ora l'implicazione inversa, cioè $\ins A$ è \pom{}$\implies\ins B$ è \pom{}.
+
+Poiché $\ins A$ è \pom{} abbiamo 
+\begin{equation}\label{eq:A-pom}
+F(t)=\intes{\ins A}{f(x+t)}=k\quad\forall t ,
+\end{equation}
+quindi \[\intes{\ins B}{f(x)}=\intes{\ins A}{f(x)} + \intes{\ins A+t}{f(x)}=F(0)+F(t)=2k . \]
+
+Prendiamo una $g$ continua per cui valga \begin{equation}\label{eq:B-non-pom}
+\intes {B+t}{g(x)}=q\quad\forall t .
+\end{equation}
+
+Se $g$ non è costante, allora $\exists t'$ tale che $\intes{\ins A+t'}{f(x)}=q'\not=\frac q2$.% perché $\ins A$ è un \pom{}
+
+Sia $\ins{A'}=\ins A+t'$. Allora poiché la somma è costante, \[\intes{\ins{A'}+t}{g(x)}=q-q' . \]
+Senza perdita di generalità, assumiamo $q=0$. %wlog perché possiamo traslare la funzione in alto o in basso
+\[\intes{\ins{A'}}{g(x)}+\intes{\ins{A'}+t}{g(x)}=0\] per cui
+\[G(0)+G(t)=0\quad\quad\quad\text{con }G(t)=\intes {A'} {g(x+t)} . \]
+\[\intes{\ins B}{g(x)}=q\text{ (costante)}\implies G(0+y)+G(t+y)=0\quad\forall y\]
+dunque $G$ è periodica di periodo $2t$.
+\begin{equation}\label{eq:g-period}
+\begin{split}
+\intes{\ins B+y}{g(x)}=\intes{\ins{A'}+y}{g(x)}+\intes{\ins{A'}+t+y}{g(x)}=\\
+\intes{\ins{A'}}{g(x+y)+g(x+t+y)}=0\quad\forall y
+\end{split}\end{equation}
+Per la \eqref{eq:g-period} abbiamo che $g(x)+g(x+t)$ è periodica.
+
+Se $g(x)=k$, allora $g(x+t)=g(x)-k$, perciò $g(x+t)+g(x+t+t)=k$, dunque anche $g$ è periodica.
+
+Per concludere la dimostrazione, l'unica funzione periodica con integrale convergente su un insieme di misura infinita e su tutte le sue traslazioni è la costante nulla, il che contraddice la \eqref{eq:B-non-pom}.
+\end{proof}
+Ecco alcuni esempi di applicazioni del teorema.
+\begin{esem}\label{esem:semiretta}
+$(a,+\infty)$ è \pom{} per ogni $a\in\rea$.
+\end{esem}
+\begin{proof}
+Per ipotesi, abbiamo \[\displaystyle\inte a\infty f=\inte{a+t}\infty f\] per ogni $t\in\rea$
+e dunque $\displaystyle\inte a{a+t}f=0$ per ogni $t\in\rea$.
+
+%L'integrale non aumenta quindi blabla $f$ è costante.
+
+%{\tiny
+Poiché $f$ è continua, se è positiva in un certo punto $x_0$
+è positiva in tutto un intervallo $(x_0-\varepsilon,x_0+\varepsilon)$, quindi
+l'integrale su quell'intervallo non è $0$.
+Dunque deve essere identicamente nulla su tutto $\rea$.%}
+\end{proof}
+
+\begin{esem}Insiemi come $\displaystyle\ins X=\bigcup_{k\in\mathbb Z}(a+2kb,b+2kb)$ non sono \pom{}.
+\end{esem}
+\begin{proof}Ovviamente esiste una traslazione $\sigma$ tramite cui due copie di $\ins X$ ricoprono quasi tutto $\rea$.
+Un semplice controesempio è:
+\begin{equation*}
+f(x)=\left\{\begin{matrix}
+0 & x<0 \\ 
+x & x\in(0,1]\\
+-x+2 & x\in(1,3]\\
+x-4 & x\in(3,4]\\
+0 & x>4
+\end{matrix}\right.
+\end{equation*}
+con $a=0$, $b=1$ e $k=1$, per cui l'integrale è uguale a $0$ indipendentemente dalla traslazione $\sigma$.
+\begin{center}
+\includegraphics*[scale=0.8]{ex1.pdf}
+\end{center}
+\end{proof}
+
+\begin{esem}\label{es:semiretta-tratti}
+Insiemi come $\ins Y=\ins X\cap(a,\infty)$ sono \pom{}.
+\end{esem}
+\begin{proof}
+Esiste una traslazione $\sigma$ tramite cui due copie di $\ins Y$ formano una semiretta, per cui la tesi segue dall'esempio \ref{esem:semiretta}.
+\end{proof}
+
+\begin{esem}Se $a>0$ allora $\ins X=(-\infty,a)\cup(2a,3a)$ è \pom{}.
+\end{esem}
+\begin{proof}Poiché la lunghezza dell'intervallo $(a,2a)$ è la stessa dell'intervallo $(2a,3a)$, possiamo dividere $\ins X$ in due sottoinsiemi che sono l'uno la copia dell'altro, ed essi sono \pom{} come mostrato nell'esempio \ref{es:semiretta-tratti}. Il discorso si può estendere anche a insiemi come $(-\infty,a)\bigcup_{n<m}(2na,(2n+1)a)$ per $m\in\mathbb N$.
+\end{proof}
+
+\begin{esem}Esiste una funzione non periodica con integrale indipendente da traslazioni su un compatto:
+\begin{equation*}
+f(x)=\cos\left(2\pi x\right)+\cos\left(\frac{\sqrt2}2\pi x\right)\qquad\ins K=\left[0,1\right]\cup\left[\sqrt2,\sqrt2+1\right]
+\end{equation*}
+\end{esem}
+\begin{center}
+\includegraphics*[scale=0.8]{ex4.pdf}
+\end{center}
+\begin{proof}L'integrale è costante perché
+\begin{equation}\label{eq:int-funz-non-per}
+\intes{\ins K+t}{\cos\left(2\pi x\right)+\cos\left(\frac{\sqrt2}2\pi x\right)}=
+\end{equation}
+\begin{equation*}
+\underbrace{\intes{\ins K}{\cos\left(2\pi\left(x+t\right)\right)}}_0+\intes{\ins K}{\cos\left(\frac{\sqrt2}2\pi\left(x+t\right)\right)}=
+\end{equation*}
+\begin{equation*}
+=\frac{\sqrt2}\pi\left[\left.\sin\left(\frac{\sqrt2}2\pi x\right)\right|_0^1+\left.\sin\left(\frac{\sqrt2}2\pi x\right)\right|_{\sqrt2}^{\sqrt2+1}\right]=
+\end{equation*}
+\begin{equation*}\begin{split}
+=\frac{\sqrt2}\pi\left[\sin\left(\frac{\sqrt2}2\pi\left(1+t\right)\right)\right.&
+-\sin\left(\frac{\sqrt2}2\pi t\right)+\\
++\sin\left(\frac{\sqrt2}2\pi\left(\sqrt2+1+t\right)\right)&
+\left.-\sin\left(\frac{\sqrt2}2\pi\left(\sqrt2+t\right)\right)\right]
+\end{split}\end{equation*}
+Il primo seno diventa $\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$, il terzo $-\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$ e il quarto $-\sin\left(\frac{\sqrt2}2\pi t\right)$ per cui l'integrale nella \eqref{eq:int-funz-non-per} è uguale a $0$.
+ 
+Naturalmente la funzione non è periodica perché il periodo di $\cos(2\pi x)$ è $1$ mentre quello di $\cos\left(\frac{\sqrt2}2\pi x\right)$ è $2\sqrt2$, il che risulta in qualche modo controintuitivo.
+\end{proof}
+\end{document}
