@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage[a4paper,margin=2cm,marginparwidth=2cm,marginparsep=0.2cm]{geometry}
+\usepackage{vwcol}
+\usepackage{mathpazo}
+\usepackage[hyperfootnotes=false,pdftex]{hyperref}
+\hypersetup{
+    pdftitle={A Silvia},
+    pdfauthor={Marco Giannaccari},%typeset by iza :P
+    pdfsubject={Letteratura},
+    pdfkeywords={Poesia A Silvia Giacomo Leopardi},
+    pdfproducer={LaTeX},
+    pdfcreator={pdflatex},
+    pdfstartview={XYZ null null 1.00},
+    pdfremotestartview={XYZ null null 1.00},
+    pdfdisplaydoctitle={True}
+}
+\title{A Silvia}
+\author{}
+\date{}
+
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{marginnote}
+
+\usepackage{xcolor}
+\definecolor{grigio}{RGB}{90,90,90}
+
+\newcommand{\notaparentesi}[1]{{\color{grigio}\textsf{(#1)}}}
+\newcommand{\notamargine}[1]{\marginnote{\color{grigio}\small#1}}
+\renewcommand\thefootnote{\textcolor{grigio}{\arabic{footnote}}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{vwcol}[widths={0.43,0.57},justify=flush,rule=0pt,indent=0em]
+\reversemarginpar
+Silvia, rimembri ancora\\
+quel tempo della tua vita mortale,\\
+quando beltà splendea\\
+negli occhi tuoi ridenti e fuggitivi,\\
+\notamargine{5.}
+e tu, lieta e pensosa, il limitare\\
+di gioventù salivi?\\
+
+Sonavan le quiete\\
+stanze, e le vie d'intorno,\\
+al tuo perpetuo canto,\\
+\notamargine{10.}
+allor che all'opre femminili intenta\\
+sedevi, assai contenta.\\
+di quel vago avvenir che in mente avevi.\\
+Era il maggio odoroso: e tu solevi\\
+così menare il giorno.\\
+
+\notamargine{15.}
+Io gli studi leggiadri\\
+talor lasciando e le sudate carte,\\
+ove il tempo mio primo\\
+e di me si spendea la miglior parte,\\
+d’in su i veroni del paterno ostello\\
+\notamargine{20.}
+porgea gli orecchi al suon della tua voce,\\
+ed alla man veloce\\
+che percorrea la faticosa tela.\\
+Miravo il ciel sereno,\\
+le vie dorate e gli orti,\\
+\notamargine{25.}
+e quinci il mar da lungi, e quindi il monte.\\
+Lingua mortal non dice\\
+quel ch'io sentiva in seno.\\
+
+Che pensieri soavi,\\
+che speranze, che cori, o Silvia mia!\\
+\notamargine{30.}
+Quale allor ci apparia\\
+la vita umana e il fato!\\
+Quando sovviemmi di cotanta speme,\\
+un affetto mi preme\\
+acerbo e sconsolato,\\
+\notamargine{35.}
+e tornami a doler di mia sventura.\\
+O natura, o natura,\\
+perché non rendi poi\\
+quel che prometti allor? Perché di tanto\\
+inganni i figli tuoi?\\
+
+
+
+Silvia, ricordi ancora\\
+il tempo in cui eri viva\\
+quando bellezza spendeva\\
+nei tuoi occhi allegri e schivi,\\
+e tu, lieta e pensosa \notaparentesi{ossimoro} oltrepassavi\\
+il limite della gioventù? \notaparentesi{similitudine}\footnote[1]{}\\
+
+Risuonava la casa quieta\\
+e le strade che la circondano\\
+al tuo canto eterno,\\
+quando eri affaccendata nei lavori femminili \notaparentesi{anastrofe}\\
+ti felicitavi\\
+del tuo futuro di cui avevi una vaga idea.\\
+era Maggio ed eri solita\\
+trascorrere le tue giornate in tal modo.\\
+
+Interrompevo a volte i piacevoli studi\\
+lasciando le impegnative carte \notaparentesi{metonimia},\\
+dove spendevo la mia giovinezza\\
+e la parte migliore di me,\\
+da sopra i balconi della casa paterna\\
+tendevo le orecchie al suono della tua voce\\
+e a quello della tua mano veloce\\
+che percorreva la tela \notaparentesi{metonimia}.\\
+Guardavo il cielo sereno,\\
+le vie soleggiate soleggiate e i giardini,\\
+e da una parte il mare da me lontano, dall'altra la montagna.\\
+Nessun uomo può dire\\
+quel che io provavo dentro.\\
+
+Che pensieri soavi,\\
+che speranze, che sentimenti\footnote[2]{}, o mia Silvia!\\
+Come ci apparivano, in quei tempi,\\
+la vita umana e il destino!\\
+Quando ricordo le nostre speranze\\
+l'angoscia mi sopprime,\\
+crudele e inconsolabile,\\
+e ritorna il dolore per le mie sventure.\\
+O natura, o natura,\\
+perché non mantieni\\
+le promesse fatte in passato? Perché\\
+inganni i tuoi figli in questo modo?
+\end{vwcol}
+\footnotetext[1]{L'autore utilizza la figura del cuore (``cori'') per indicare i sentimenti, poiché il cuore stesso ne è la sede.}
+\footnotetext[2]{La vita di Silvia viene vista dal Leopardi alla stregua di un sentiero, sul quale la ragazza attraversa le diverse fasi della propria esistenza.}
+
+\end{document}
