@@ -57,7 +57,7 @@ F(t)=\intes{\ins A}{f(x+t)}=k\quad\forall t ,
 quindi \[\intes{\ins B}{f(x)}=\intes{\ins A}{f(x)} + \intes{\ins A+t}{f(x)}=F(0)+F(t)=2k . \]
 
 Prendiamo una $g$ continua per cui valga \begin{equation}\label{eq:B-non-pom}
-\intes {B+t}{g(x)}=q\quad\forall t .
+\intes {\ins B+t}{g(x)}=q\quad\forall t .
 \end{equation}
 
 Se $g$ non è costante, allora $\exists t'$ tale che $\intes{\ins A+t'}{f(x)}=q'\not=\frac q2$.% perché $\ins A$ è un \pom{}
@@ -127,6 +127,7 @@ Esiste una traslazione $\sigma$ tramite cui due copie di $\ins Y$ formano una se
 \begin{proof}Poiché la lunghezza dell'intervallo $(a,2a)$ è la stessa dell'intervallo $(2a,3a)$, possiamo dividere $\ins X$ in due sottoinsiemi che sono l'uno la copia dell'altro, ed essi sono \pom{} come mostrato nell'esempio \ref{es:semiretta-tratti}. Il discorso si può estendere anche a insiemi come $(-\infty,a)\bigcup_{n<m}(2na,(2n+1)a)$ per $m\in\mathbb N$.
 \end{proof}
 
+Alcune osservazioni non correlate al teorema \ref{teo:B-pom-sse-A-pom} ma al problema in generale.
 \begin{esem}Esiste una funzione non periodica con integrale indipendente da traslazioni su un compatto:
 \begin{equation*}
 f(x)=\cos\left(2\pi x\right)+\cos\left(\frac{\sqrt2}2\pi x\right)\qquad\ins K=\left[0,1\right]\cup\left[\sqrt2,\sqrt2+1\right]
@@ -154,5 +155,17 @@ f(x)=\cos\left(2\pi x\right)+\cos\left(\frac{\sqrt2}2\pi x\right)\qquad\ins K=\l
 Il primo seno diventa $\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$, il terzo $-\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$ e il quarto $-\sin\left(\frac{\sqrt2}2\pi t\right)$ per cui l'integrale nella \eqref{eq:int-funz-non-per} è uguale a $0$.
  
 Naturalmente la funzione non è periodica perché il periodo di $\cos(2\pi x)$ è $1$ mentre quello di $\cos\left(\frac{\sqrt2}2\pi x\right)$ è $2\sqrt2$, il che risulta in qualche modo controintuitivo.
+\end{proof}
+Gli strumenti dell'analisi di Fourier risultano poco applicabili, in quanto servono condizioni molto forti sull'insieme in esame perché ne consegua la convergenza $L^1(\rea)$ della funzione.
+\begin{esem}Il fatto che $\mu(\ins X)=\infty$ e che $\intes{\ins X+t}{f(x)}=k\quad\forall t\in\rea$ non è condizione sufficiente perché $f\in L^1(\rea)$.
+\end{esem}
+\begin{proof}Sia $b_0=-1$, $a_n=b_{n-1}+1$ e $b_n=a_n+\frac1n$. Ora consideriamo gli insiemi $\ins A=\bigcup_{n=1}^\infty(a_n,b_n)$, $\ins B=\bigcup_{n=1}^\infty(-b_n,-a_n)$ e $\ins C=\ins A\cup\ins B$. Nonostante la misura di $\ins C$ sia infinita, l'unione finita di traslati di $\ins C$ non ricopre mai tutto $\rea$.
+
+La funzione
+\begin{equation*}
+f(x)=\left\{\begin{matrix}1&-1<x<1\\\frac1{|x|}&\text {altrimenti}
+\end{matrix}\right.
+\end{equation*}
+ha integrale convergente su $\ins C$ e su tutte le sue traslazioni ma naturalmente non su $\rea$.
 \end{proof}
 \end{document}
