@@ -9,8 +9,10 @@
 \newcommand\rea{\mathbb R}
 \newcommand\ins[1]{\mathbf #1}
 \newcommand\pom{di Pompeiu}
-\newcommand\inte[3]{\int\limits_{#1}^{#2}\!#3(x)\text dx}
+\newcommand\inte[3]{\int\limits_{#1}^{#2}\!#3\text dx}
+\newcommand\intex[3]{\int\limits_{#1}^{#2}\!#3(x)\text dx}
 \newcommand\intes[2]{\int\limits_{#1}\!#2\text dx}
+\newcommand\intesx[2]{\int\limits_{#1}\!#2(x)\text dx}
 
 \newtheorem*{prop*}{Proposizione}
 \newtheorem{prop}{Proposizione}
@@ -22,29 +24,40 @@
 %\setmainfont[Ligatures=TeX]{Linux Libertine O}
 %\setdefaultlanguage{italian}
 
-\title{Sottoinsiemi \pom{} di $\rea$}% di misura infinita}
+\title{Sottoinsiemi \pom{} di $\rea$}
 \author{Isabella Bosia}
 \date{}
 
 \begin{document}
 \maketitle
 %()&
-In questo documento, $\Sigma(\ins A)$ è l'insieme delle traslazioni e delle riflessioni $\sigma$ di $\ins A$. $\ins A+t$ indicherà l'insieme $\ins A$ traslato di $t$. 
-\begin{defn}$\ins A\subseteq\rea$ è \pom{} se data $f:\rea\to\rea$ continua tale che $\intes {\sigma(\ins A)} f=k\in\rea$ non dipende da  $\sigma\in\Sigma$ si ha che $f$ è costante.
+In questo documento, $\Sigma(\ins A)$ è l'insieme delle traslazioni
+e delle riflessioni $\sigma$ di $\ins A$.
+$\ins A+t$ indicherà l'insieme $\ins A$ traslato di $t$. 
+\begin{defn}
+$\ins A\subseteq\rea$ è \pom{} se data $f:\rea\to\rea$ continua
+tale che $\intesx {\sigma(\ins A)} f=k\in\rea$ non dipende da $\sigma\in\Sigma$
+si ha che $f$ è costante.
 \end{defn}
 
-Sia $\ins A$ un insieme di misura infinita, sia $\sigma(\ins A)$ una sua traslazione di $t$ tale che $\mu(\ins A\cap\sigma(\ins A))=0$ (dove $\mu$ è la misura di Lebesgue) e sia $\ins B=\ins A\cup\sigma(\ins A)$.
+Sia $\ins A$ un insieme di misura infinita,
+sia $\sigma(\ins A)$ una sua traslazione di $t$
+tale che $\mu(\ins A\cap\sigma(\ins A))=0$
+(dove $\mu$ è la misura di Lebesgue)
+e sia $\ins B=\ins A\cup\sigma(\ins A)$.
 \begin{teo}\label{teo:B-pom-sse-A-pom}$\ins B$ è \pom{} $\iff$ $\ins A$ è \pom{}.
 \end{teo}
 \begin{proof}Dimostriamo prima che $\ins B$ è \pom{}$\implies\ins A$ è \pom{}.
 
-Supponiamo che $\ins A$ non sia \pom{}. Allora $\exists g$ non costante tale che $\intes {\sigma(\ins A)}{g(x)}=k$ non dipende da $\sigma$.
+Supponiamo che $\ins A$ non sia \pom{}. Allora $\exists g$ non costante
+tale che $\intesx {\sigma(\ins A)}g=k$ non dipende da $\sigma$.
 
 Poiché $\ins A$ e $\ins A+t$ sono quasi disgiunti, abbiamo che
 \begin{equation}\label{eq:quasi-disgiunti}
-\intes{\ins B}{g(x)}=\intes{\ins A}{g(x)}+\intes{\ins A+t} {g(x)}=2k
+\intesx{\ins B}g=\intesx{\ins A}g+\intesx{\ins A+t}g=2k
 \end{equation}
-Quindi $\exists g$ non costante con integrale costante sulle traslazioni di $\ins B$, il che contraddice il fatto che $\ins B$ è \pom{}.
+Quindi $\exists g$ non costante con integrale costante sulle traslazioni di $\ins B$,
+il che contraddice il fatto che $\ins B$ è \pom{}.
 
 Si noti che questa implicazione non è limitata al caso in cui $\ins A$ sia di misura infinita.
 
@@ -54,51 +67,56 @@ Poiché $\ins A$ è \pom{} abbiamo
 \begin{equation}\label{eq:A-pom}
 F(t)=\intes{\ins A}{f(x+t)}=k\quad\forall t ,
 \end{equation}
-quindi \[\intes{\ins B}{f(x)}=\intes{\ins A}{f(x)} + \intes{\ins A+t}{f(x)}=F(0)+F(t)=2k . \]
+quindi \[\intesx{\ins B}f=\intesx{\ins A}f + \intesx{\ins A+t}f=F(0)+F(t)=2k . \]
 
 Prendiamo una $g$ continua per cui valga \begin{equation}\label{eq:B-non-pom}
-\intes {\ins B+t}{g(x)}=q\quad\forall t .
+\intesx {\ins B+t}g=q\quad\forall t .
 \end{equation}
 
-Se $g$ non è costante, allora $\exists t'$ tale che $\intes{\ins A+t'}{f(x)}=q'\not=\frac q2$.% perché $\ins A$ è un \pom{}
+Se $g$ non è costante, allora $\exists t'$ tale che
+$\intesx{\ins A+t'}f=q'\not=\frac q2$.% perché $\ins A$ è un \pom{}
 
-Sia $\ins{A'}=\ins A+t'$. Allora poiché la somma è costante, \[\intes{\ins{A'}+t}{g(x)}=q-q' . \]
-Senza perdita di generalità, assumiamo $q=0$. %wlog perché possiamo traslare la funzione in alto o in basso
-\[\intes{\ins{A'}}{g(x)}+\intes{\ins{A'}+t}{g(x)}=0\] per cui
-\[G(0)+G(t)=0\quad\quad\quad\text{con }G(t)=\intes {A'} {g(x+t)} . \]
-\[\intes{\ins B}{g(x)}=q\text{ (costante)}\implies G(0+y)+G(t+y)=0\quad\forall y\]
+Sia $\ins{A'}=\ins A+t'$. Allora poiché la somma è costante,
+\[\intesx{\ins{A'}+t}g=q-q' . \]
+Senza perdita di generalità, assumiamo $q=0$.
+%wlog perché possiamo traslare la funzione in alto o in basso
+\[\intesx{\ins{A'}}g+\intesx{\ins{A'}+t}g=0\] per cui
+\[G(0)+G(t)=0\quad\quad\quad\text{con }G(t)=\intes {\ins{A'}} {g(x+t)} . \]
+\[\intesx{\ins B}g=q\text{ (costante)}\implies G(0+y)+G(t+y)=0\quad\forall y\]
 dunque $G$ è periodica di periodo $2t$.
 \begin{equation}\label{eq:g-period}
 \begin{split}
-\intes{\ins B+y}{g(x)}=\intes{\ins{A'}+y}{g(x)}+\intes{\ins{A'}+t+y}{g(x)}=\\
+\intesx{\ins B+y}g=\intesx{\ins{A'}+y}g+\intesx{\ins{A'}+t+y}g=\\
 \intes{\ins{A'}}{g(x+y)+g(x+t+y)}=0\quad\forall y
 \end{split}\end{equation}
 Per la \eqref{eq:g-period} abbiamo che $g(x)+g(x+t)$ è periodica.
 
-Se $g(x)=k$, allora $g(x+t)=g(x)-k$, perciò $g(x+t)+g(x+t+t)=k$, dunque anche $g$ è periodica.
+Se $g(x)=k$, allora $g(x+t)=g(x)-k$, perciò $g(x+t)+g(x+t+t)=k$,
+dunque anche $g$ è periodica.
 
-Per concludere la dimostrazione, l'unica funzione periodica con integrale convergente su un insieme di misura infinita e su tutte le sue traslazioni è la costante nulla, il che contraddice la \eqref{eq:B-non-pom}.
+Per concludere la dimostrazione, l'unica funzione periodica
+con integrale convergente su un insieme di misura infinita
+e su tutte le sue traslazioni è la costante nulla,
+il che contraddice la \eqref{eq:B-non-pom}.
 \end{proof}
 Ecco alcuni esempi di applicazioni del teorema.
 \begin{esem}\label{esem:semiretta}
 $(a,+\infty)$ è \pom{} per ogni $a\in\rea$.
 \end{esem}
 \begin{proof}
-Per ipotesi, abbiamo \[\displaystyle\inte a\infty f=\inte{a+t}\infty f\] per ogni $t\in\rea$
-e dunque $\displaystyle\inte a{a+t}f=0$ per ogni $t\in\rea$.
+Per ipotesi, abbiamo \[\displaystyle\intex a\infty f=\intex{a+t}\infty f\] per ogni $t\in\rea$
+e dunque $\displaystyle\intex a{a+t}f=0$ per ogni $t\in\rea$.
 
-%L'integrale non aumenta quindi blabla $f$ è costante.
-
-%{\tiny
 Poiché $f$ è continua, se è positiva in un certo punto $x_0$
 è positiva in tutto un intervallo $(x_0-\varepsilon,x_0+\varepsilon)$, quindi
 l'integrale su quell'intervallo non è $0$.
-Dunque deve essere identicamente nulla su tutto $\rea$.%}
+Dunque deve essere identicamente nulla su tutto $\rea$.
 \end{proof}
 
 \begin{esem}Insiemi come $\displaystyle\ins X=\bigcup_{k\in\mathbb Z}(a+2kb,b+2kb)$ non sono \pom{}.
 \end{esem}
-\begin{proof}Ovviamente esiste una traslazione $\sigma$ tramite cui due copie di $\ins X$ ricoprono quasi tutto $\rea$.
+\begin{proof}Ovviamente esiste una traslazione $\sigma$
+tramite cui due copie di $\ins X$ ricoprono quasi tutto $\rea$.
 Un semplice controesempio è:
 \begin{equation*}
 f(x)=\left\{\begin{matrix}
@@ -119,16 +137,24 @@ con $a=0$, $b=1$ e $k=1$, per cui l'integrale è uguale a $0$ indipendentemente 
 Insiemi come $\ins Y=\ins X\cap(a,\infty)$ sono \pom{}.
 \end{esem}
 \begin{proof}
-Esiste una traslazione $\sigma$ tramite cui due copie di $\ins Y$ formano una semiretta, per cui la tesi segue dall'esempio \ref{esem:semiretta}.
+Esiste una traslazione $\sigma$ tramite cui due copie di $\ins Y$
+formano una semiretta, per cui la tesi segue dall'esempio \ref{esem:semiretta}.
 \end{proof}
 
 \begin{esem}Se $a>0$ allora $\ins X=(-\infty,a)\cup(2a,3a)$ è \pom{}.
 \end{esem}
-\begin{proof}Poiché la lunghezza dell'intervallo $(a,2a)$ è la stessa dell'intervallo $(2a,3a)$, possiamo dividere $\ins X$ in due sottoinsiemi che sono l'uno la copia dell'altro, ed essi sono \pom{} come mostrato nell'esempio \ref{es:semiretta-tratti}. Il discorso si può estendere anche a insiemi come $(-\infty,a)\bigcup_{n<m}(2na,(2n+1)a)$ per $m\in\mathbb N$.
+\begin{proof}
+Poiché la lunghezza dell'intervallo $(a,2a)$ è la stessa dell'intervallo $(2a,3a)$,
+possiamo dividere $\ins X$ in due sottoinsiemi che sono l'uno la copia dell'altro,
+ed essi sono \pom{} come mostrato nell'esempio \ref{es:semiretta-tratti}.
+Il discorso si può estendere anche a insiemi come
+$(-\infty,a)\bigcup_{n<m}(2na,(2n+1)a)$ per $m\in\mathbb N$.
 \end{proof}
 
-Alcune osservazioni non correlate al teorema \ref{teo:B-pom-sse-A-pom} ma al problema in generale.
-\begin{esem}Esiste una funzione non periodica con integrale indipendente da traslazioni su un compatto:
+Alcune osservazioni non correlate al teorema \ref{teo:B-pom-sse-A-pom}
+ma al problema in generale.
+\begin{esem}Esiste una funzione non periodica con integrale indipendente
+da traslazioni su un compatto:
 \begin{equation*}
 f(x)=\cos\left(2\pi x\right)+\cos\left(\frac{\sqrt2}2\pi x\right)\qquad\ins K=\left[0,1\right]\cup\left[\sqrt2,\sqrt2+1\right]
 \end{equation*}
@@ -152,20 +178,57 @@ f(x)=\cos\left(2\pi x\right)+\cos\left(\frac{\sqrt2}2\pi x\right)\qquad\ins K=\l
 +\sin\left(\frac{\sqrt2}2\pi\left(\sqrt2+1+t\right)\right)&
 \left.-\sin\left(\frac{\sqrt2}2\pi\left(\sqrt2+t\right)\right)\right]
 \end{split}\end{equation*}
-Il primo seno diventa $\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$, il terzo $-\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$ e il quarto $-\sin\left(\frac{\sqrt2}2\pi t\right)$ per cui l'integrale nella \eqref{eq:int-funz-non-per} è uguale a $0$.
+Il primo seno diventa $\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$,
+il terzo $-\sin\left(\frac{\sqrt2}2\pi+\frac{\sqrt2}2\pi t\right)$
+e il quarto $-\sin\left(\frac{\sqrt2}2\pi t\right)$ per cui l'integrale
+nella \eqref{eq:int-funz-non-per} è uguale a $0$.
  
-Naturalmente la funzione non è periodica perché il periodo di $\cos(2\pi x)$ è $1$ mentre quello di $\cos\left(\frac{\sqrt2}2\pi x\right)$ è $2\sqrt2$, il che risulta in qualche modo controintuitivo.
+Naturalmente la funzione non è periodica perché il periodo di $\cos(2\pi x)$
+è $1$ mentre quello di $\cos\left(\frac{\sqrt2}2\pi x\right)$ è $2\sqrt2$,
+il che risulta in qualche modo controintuitivo.
 \end{proof}
-Gli strumenti dell'analisi di Fourier risultano poco applicabili, in quanto servono condizioni molto forti sull'insieme in esame perché ne consegua la convergenza $L^1(\rea)$ della funzione.
-\begin{esem}Il fatto che $\mu(\ins X)=\infty$ e che $\intes{\ins X+t}{f(x)}=k\quad\forall t\in\rea$ non è condizione sufficiente perché $f\in L^1(\rea)$.
+Gli strumenti dell'analisi di Fourier risultano poco applicabili,
+in quanto servono condizioni molto forti sull'insieme in esame
+perché ne consegua la convergenza $L^1(\rea)$ della funzione.
+\begin{esem}Il fatto che $\mu(\ins X)=\infty$ e che
+$\intesx{\ins X+t}f=k\quad\forall t\in\rea$
+non è condizione sufficiente perché $f\in L^1(\rea)$.
 \end{esem}
-\begin{proof}Sia $b_0=-1$, $a_n=b_{n-1}+1$ e $b_n=a_n+\frac1n$. Ora consideriamo gli insiemi $\ins A=\bigcup_{n=1}^\infty(a_n,b_n)$, $\ins B=\bigcup_{n=1}^\infty(-b_n,-a_n)$ e $\ins C=\ins A\cup\ins B$. Nonostante la misura di $\ins C$ sia infinita, l'unione finita di traslati di $\ins C$ non ricopre mai tutto $\rea$.
+\begin{proof}Sia $b_0=-1$, $a_n=b_{n-1}+1$ e $b_n=a_n+\frac1n$.
+Ora consideriamo gli insiemi $\ins A=\bigcup_{n=1}^\infty(a_n,b_n)$,
+$\ins B=\bigcup_{n=1}^\infty(-b_n,-a_n)$ e $\ins C=\ins A\cup\ins B$.
+Nonostante la misura di $\ins C$ sia infinita,
+l'unione finita di traslati di $\ins C$ non ricopre mai tutto $\rea$.
 
 La funzione
 \begin{equation*}
 f(x)=\left\{\begin{matrix}1&-1<x<1\\\frac1{|x|}&\text {altrimenti}
 \end{matrix}\right.
 \end{equation*}
-ha integrale convergente su $\ins C$ e su tutte le sue traslazioni ma naturalmente non su $\rea$.
+ha integrale convergente su $\ins C$ e su tutte le sue traslazioni
+ma naturalmente non su $\rea$.
 \end{proof}
+Supponiamo che esista un ricoprimento finito di quasi tutto $\rea$
+formato da $k$ copie traslate di $\ins X$,
+allora $\intesx\rea f\leq k\intesx{\ins X}f$.
+Se $f$ non fosse $L^1$ su $\rea$ esisterebbero due insiemi
+$\ins A\in\sigma(\ins X)$ e $\ins B\in\sigma(\ins X)$ tali che
+$\intesx{\ins A}f=+\infty$ e $\intesx{\ins B}f=-\infty$.
+Allora in ogni traslazione $\sigma(\ins X)$ esistono tali $\ins A$ e $\ins B$.
+%vale per tutti perché la funzione è continua
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
