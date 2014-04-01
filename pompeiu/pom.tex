@@ -17,9 +17,11 @@
 \newtheorem*{prop*}{Proposizione}
 \newtheorem{prop}{Proposizione}
 \newtheorem{teo}{Teorema}
+\newtheorem{lemma}{Lemma}
 \theoremstyle{definition}
 \newtheorem*{defn}{Definizione}
 \newtheorem{esem}{Esempio}
+\newenvironment{dafinire}{\hrulefill}{\hrulefill}
 
 %\setmainfont[Ligatures=TeX]{Linux Libertine O}
 %\setdefaultlanguage{italian}
@@ -208,15 +210,44 @@ f(x)=\left\{\begin{matrix}1&-1<x<1\\\frac1{|x|}&\text {altrimenti}
 ha integrale convergente su $\ins C$ e su tutte le sue traslazioni
 ma naturalmente non su $\rea$.
 \end{proof}
-Supponiamo che esista un ricoprimento finito di quasi tutto $\rea$
-formato da $k$ copie traslate di $\ins X$,
-allora $\intesx\rea f\leq k\intesx{\ins X}f$.
-Se $f$ non fosse $L^1$ su $\rea$ esisterebbero due insiemi
-$\ins A\in\sigma(\ins X)$ e $\ins B\in\sigma(\ins X)$ tali che
-$\intesx{\ins A}f=+\infty$ e $\intesx{\ins B}f=-\infty$.
-Allora in ogni traslazione $\sigma(\ins X)$ esistono tali $\ins A$ e $\ins B$.
-%vale per tutti perché la funzione è continua
 
+\begin{lemma}
+Se $\exists \ins X$ \pom{} tale che $\ins X \subseteq (a,b)$ con $b\geq a\geq0$,
+allora $\exists \ins{X'}$ similitudine di $\ins X$ tale che $\ins{X'}$ è \pom{} e
+$\ins{X'}\subseteq\left(a,\frac b2\right)$.
+\end{lemma}
+\begin{proof}
+Supponiamo che $\ins{X'}$ non sia \pom{}, allora $\exists f$ non costante
+tale che $\intesx{\ins X'}f$ è indipendente da traslazioni di $\ins{X'}$.
+Visto che $\ins{X'}$ è simile a $\ins X$, sia $r$ il rapporto tra le distanze
+di $\ins X$ e $\ins{X'}$. Allora $\ins X$ non è \pom{} perché
+$\intes{\ins X}{f(rx)}$ è invariante per traslazioni di $\ins X$.
+\end{proof}
+
+\begin{teo}Non esistono insiemi \pom{} limitati.
+\end{teo}
+\begin{proof}
+Supponiamo che esistano insiemi \pom{} limitati. Allora sia $\mathcal M$
+l'insieme degli insiemi misurabili di $[0,1]$ che contengono un intervallo
+di lunghezza maggiore o uguale a $\frac14$.
+
+Definiamo la relazione $r$ così:
+$X r Y \Longleftrightarrow \exists\sigma$ isometria tale che
+$\mu(X\Delta\sigma(Y))=0$ (dove $\Delta$ è la differenza simmetrica).
+Chiaramente $r$ è una relazione di equivalenza.
+
+Allora in $\mathcal M/r$ prendo $[\ins P]$ tale che $\ins P$ è \pom{} ed
+$\exists \sigma$ isometria tale che $\sigma(\ins P)\subseteq\left[0,\frac14\right]$.
+
+Ora sia $\mathcal F([\ins P])$ il filtro di tutte le classi che contengono $[\ins P]$.
+%$\mathcal{F}([\ins P])$ è un ultrafiltro perché ...
+
+Consideriamo l'insieme $\ins X=\left[0,\frac14\right]\cup\left[\frac34,1\right]$.
+Se $\ins X \in \mathcal F([\ins P])$, allora $\ins {X^c} \notin \mathcal F([\ins P])$.
+Ma se $\ins{X}\in \mathcal F([\ins P])$
+allora esiste un sottoinsieme $\ins Y$ di $\ins{X}$ che contiene $[\ins P]$.
+Visto che $\ins P$ può essere traslato in un intervallo di lunghezza $\frac14$, allora anche $[\ins {X^c}]$ contiene $[\ins P]$, il che è assurdo.
+\end{proof}
 
 
 
