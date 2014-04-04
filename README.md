@@ -3,6 +3,7 @@ texstuff
 Just various math stuff written in LaTeX, stored on GitHub.
 
 - my work on the Pompeiu problem
+- a colouring problem in ![equation](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BR%7D%5E2)
 - moar coming
 
 License
