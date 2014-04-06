@@ -16,7 +16,7 @@
 \newenvironment{dafinire}{\hrulefill}{\hrulefill}
 
 \title{Forcing for dummies}
-\author{Isabella Bosia}
+\author{Timothy Y. Chow}
 \date{}
 \begin{document}
 \maketitle
@@ -62,8 +62,8 @@ definition like, "A `universe' is a set $\mathcal{M}$ together with a binary rel
 satisfying..." followed by a long list of axioms such as
 
   If x and y are distinct elements of $\mathcal{M}$ then either there
-  exists z in $\mathcal{M}$ such that $z E x$ but not $z E y$, or there
-  exists z in $\mathcal{M}$ such that $z E y$ but not $z E x$.  (This is
+  exists $z$ in $\mathcal{M}$ such that $z E x$ but not $z E y$, or there
+  exists $z$ in $\mathcal{M}$ such that $z E y$ but not $z E x$.  (This is
   the "Axiom of Extensionality.")
 
 [Note: It so happens that the term "universe" is not a standard one; for
@@ -79,7 +79,7 @@ Goedel's second incompleteness theorem essentially says that nobody ever
 will.
 
 Fortunately, this is not as nasty a problem as it might seem at first.  For
-example, one object that is almost a model of ZFC is V, the class of all
+example, one object that is almost a model of ZFC is $V$, the class of all
 sets.  If we take $\mathcal{M} = V$ and we take E to mean "is a member of," then we see
 that the axiom of extensionality simply says that two sets are equal if and
 only if they contain the same elements---a manifestly true statement.  The
@@ -266,7 +266,7 @@ is true in $\mathcal{M}[G]$.  Forcing is also needed to prove that ~CH is true i
 (for a suitable $G$).
 
 
-3. Names
+\section{Names}
 
 We begin by describing the "auxiliary sets" that, along with $G$, comprise
 $\mathcal M[G]$.  A crucial idea that pervades the theory of forcing is that some facts
@@ -300,7 +300,7 @@ The first subtlety is that it appears to be circular.  However, this
 apparent circularity is really just a shorthand for a recursive definition.
 For example, the empty set is a P-name, because all the members of the empty
 set certainly satisfy the required property.  Then, once we know that the
-empty set is a P-name, we can build other sets that are P-names using the
+empty set is a P-name, we can build other sets that are $P$-names using the
 definition.
 
 A P-name x is supposed to name some set X that is related to G, but x is
@@ -317,7 +317,7 @@ whereas if the tag is not in G, then I discard the potential member.
 Formally, the "value of a P-name x with respect to G," written val(x,G), is
 defined to be
 
-  val(x,G) = {val(y,G) : <y,p> is in x for some p in G}
+$$val(x,G) =\left\{val(y,G) : <y,p>\text{ is in }x\text{ for some }p\text{ in }G\right\}$$
 
 This is again a recursive definition.  The value of the empty set is always
 the empty set, and we can build up other values from this.
@@ -332,62 +332,60 @@ and want to apply it, having the extra degree of freedom of choosing a good
 P will be very valuable in constructing c.t.m.'s with special properties.
 
 The names construction is quite powerful.  For example, let us, now and
-throughout the rest of this article, require that P always contain a
-distinguished element called "1" and let us also require that G always
+throughout the rest of this article, require that $P$ always contain a
+distinguished element called "1" and let us also require that $G$ always
 contain 1.  (We previously used "1" for the set ${{}}$ but there should be no
 confusion because we will have no further occasion to mention ${{}}$.)  Then
 there is a name---in fact, a "canonical" name---for every element $X$ of $\mathcal M$.
 This can be proved by recursion: if every element Y of X has a name $Y*$, then
 we can formulate the name $X = {<Y*,1> : all Y in X}$.  Then since 1 is always
-in G, it follows that $val(X*,G) = X.  (Furthermore, this construction turns
-out to be absolute, so X} is in M.)  From this we can deduce that G has a
-name too, the "diagonal" name G} = {<X},X> : all X in P}.  Chasing the
-definition, we see that the value of this name is the set of values of X} as
-X runs over all elements of G, i.e., val(G},G) = G.
+in $G$, it follows that $val(X*,G) = X$.  (Furthermore, this construction turns
+out to be absolute, so $X*$ is in $\mathcal M$.)  From this we can deduce that $G$ has a
+name too, the "diagonal" name $G* = {<X*,X> :\text{ all }X\text{ in }P}$.  Chasing the
+definition, we see that the value of this name is the set of values of $X*$ as
+$X$ runs over all elements of $G$, i.e., $val(G*,G) = G$.
 
 We can now fill in one blank in the Fundamental Theorem.  Given M, P, and G,
-the formal definition of \mathcal{M}[G] is:
+the formal definition of $\mathcal{M}[G]$ is:
 
-  \mathcal{M}[G] = {val(x,G) : x is a P-name in M}.
+  $$\mathcal{M}[G] = \left\{val(x,G) : x\text{ is a }P\text{-name in }\mathcal M\right\}.$$
 
-We would like to claim is that \mathcal{M}[G] is a c.t.m. if \mathcal{M} is.  However, this
-turns out to be false without further conditions on P and G.  Why this is so
+We would like to claim is that $\mathcal{M}[G]$ is a c.t.m. if $\mathcal{M}$ is.  However, this
+turns out to be false without further conditions on $P$ and $G$.  Why this is so
 is the topic of the next section.
 
 
-4. A naive attempt to prove that ZFC is true in \mathcal{M}[G]
+\section{A naive attempt to prove that ZFC is true in $\mathcal{M}[G]$}
 
-The ideas presented so far, while not sufficient to prove that \mathcal{M}[G]
-satisfies ZFC, do buy us \textbf{some} of the axioms of ZFC.  In particular, \mathcal{M}[G]
+The ideas presented so far, while not sufficient to prove that $\mathcal{M}[G]$
+satisfies ZFC, do buy us \textbf{some} of the axioms of ZFC.  In particular, $\mathcal{M}[G]$
 satisfies the Pairing and Union axioms of ZFC.  I didn't define what these
 axioms are, but they are easy to state.  For example, Pairing says that for
-every X and Y in \mathcal{M}[G] there exists Z in \mathcal{M}[G] such that X E Z and Y E Z.  To
-see this, suppose that X and Y are in \mathcal{M}[G].  By definition of \mathcal{M}[G],
-X = val(x,G) and Y = val(y,G) for some P-names x and y in M.  Now set
-z = {<x,1>, <y,1>}.  This is a P-name, and it is also in \mathcal{M} (the latter
-fact requires proof, but it is essentially because \mathcal{M} satisfies Pairing).
-So Z = val(z,G) = {X,Y} is in \mathcal{M}[G] and it has the desired property (remember
+every $X$ and $Y$ in $\mathcal{M}[G]$ there exists $Z$ in $\mathcal{M}[G]$ such that $X E Z$ and $Y E Z$.  To
+see this, suppose that $X$ and $Y$ are in $\mathcal{M}[G]$.  By definition of $\mathcal{M}[G]$,
+$X = val(x,G)$ and $Y = val(y,G)$ for some $P$-names $x$ and $y$ in $\mathcal M$.  Now set
+$z = {<x,1>, <y,1>}$.  This is a $P$-name, and it is also in $\mathcal{M}$ (the latter
+fact requires proof, but it is essentially because $\mathcal{M}$ satisfies Pairing).
+So $Z = val(z,G) = {X,Y}$ is in $\mathcal{M}[G]$ and it has the desired property (remember
 that "E" denotes membership).  Pairing is so easy that we don't even need
-most of the power of the concept of names to prove that it is true in \mathcal{M}[G].
+most of the power of the concept of names to prove that it is true in $\mathcal{M}[G]$.
 
 Trouble arises, however, with other axioms of ZFC, such as the Powerset
-axiom.  Suppose X is in \mathcal{M}[G], and let x be a P-name in \mathcal{M} such that
-val(x,G) = X.  We need to find a P-name y in \mathcal{M} such that Y = val(y,G)
-contains every subset of X that lies in \mathcal{M}[G].  The following definition
+axiom.  Suppose $X$ is in $\mathcal{M}[G]$, and let $x$ be a $P$-name in $\mathcal{M}$ such that
+$val(x,G) = X$.  We need to find a $P$-name $y$ in $\mathcal{M}$ such that $Y = val(y,G)$
+contains every subset of $X$ that lies in $\mathcal{M}[G]$.  The following definition
 is a natural try:
+$$y = \left\{<z,1> : z\text{ is a }P\text{-name in }\mathcal{M}\text{ and }dom(z)\text{ is a subset of }dom(x)\right\}$$
 
-   y = {<z,1> : z is a P-name in \mathcal{M} and dom(z) is a subset
-                of dom(x)}
-
-Now suppose Z is a subset of X in \mathcal{M}[G].  There must exist a P-name z in M
-such that Z = val(z,G).  We would love to be able to say that dom(z) must be
-a subset of dom(x), because val(z,G) would then be in Y, and we would be
-done.  But unfortunately, this need not be true.  The problem is that z
+Now suppose $Z$ is a subset of $X$ in $\mathcal{M}[G]$.  There must exist a $P$-name $z$ in $\mathcal M$
+such that $Z = val(z,G)$.  We would love to be able to say that $dom(z)$ must be
+a subset of $dom(x)$, because $val(z,G)$ would then be in $Y$, and we would be
+done.  But unfortunately, this need not be true.  The problem is that $z$
 might contain a lot of "potential" elements that are not in dom(x) but that
 "disappear" when you take the value, because they are tagged with elements
 of P that are not in G.  So it seems we're stuck.
 
-All is not lost, though.  Different P-names in $\mathcal{M}$ may actually have the same
+All is not lost, though.  Different $P$-names in $\mathcal{M}$ may actually have the same
 value; although an arbitrary z that names Z might not have a domain
 contained in dom(x), perhaps a careful choice of z will.
 
@@ -403,60 +401,60 @@ example, whether or not the empty set is a member of G is something that is
 very specific to G.  In contrast, consider the following statement: If the
 empty set is a member of G, then G is nonempty.  This is something that can
 be said about G \textbf{without} knowing anything specific about G.  For a slightly
-less trivial example, we can also say that if \omega is a member of G, then
+less trivial example, we can also say that if $\omega$ is a member of G, then
 the union of all the members of G is an infinite set.  More generally,
 without any knowledge of facts that are particular to G, it is possible to
-construct quite sophisticated statements of the form, "}If} G contains a
-certain element p, \textbf{then} such-and-such must be true."  Let us now define
+construct quite sophisticated statements of the form, "\textbf{If} $G$ contains a
+certain element $p$, \textbf{then} such-and-such must be true."  Let us now define
 forcing:
 
-  Let p be an element of P and let \phi be any sentence
-  whose nouns are P-names.  Then we say that "p ||- phi"
-  (read: "p forces phi") if, for any subset G of P
+  Let p be an element of P and let $\phi$ be any sentence
+  whose nouns are $P$-names.  Then we say that "$p \Vdash \phi$"
+  (read: "$p$ forces $\phi$") if, for any subset G of P
   [satisfying technical conditions], p being a member
-  of G implies that \phi is true in \mathcal{M}[G] (i.e., \phi is
+  of G implies that $\phi$ is true in $\mathcal{M}[G]$ (i.e., $\phi$ is
   true when the names are replaced by their values).
 
 This definition requires some explanation.  First, it is not actually the
 true definition of forcing, unless the technical conditions are inserted (we
 will return to this later; ignore it for now).  The main part of the
 definition is best clarified by example.  Write 0 for the empty set, and let
-G} be the canonical name of G.  Let \phi be the sentence, "G} is nonempty."
-Then "0 ||- phi" states that for any G, 0 being a member of G implies the
-following statement: "G is nonempty" (I have replaced, in phi, the name G}
-by its value, G).  This is true.  On the other hand, if \omega} is the
-canonical name of \omega, then we would not expect "0 ||- \omega} is in G}" to
+G* be the canonical name of G.  Let $\phi$ be the sentence, "G* is nonempty."
+Then "$0 \Vdash \phi$" states that for any G, 0 being a member of G implies the
+following statement: "G is nonempty" (I have replaced, in phi, the name G*
+by its value, G).  This is true.  On the other hand, if $\omega$* is the
+canonical name of $\omega$, then we would not expect "$0 \Vdash \omega*$ is in G*" to
 be true; that is, we would not expect the fact that 0 is in G to imply that
-omega is in G, because some G's might contain 0 and not \omega.
+omega is in G, because some G's might contain 0 and not $\omega$.
 
 How does this concept help us?  Let us return to the problem in the previous
-section, of proving that \mathcal{M}[G] satisfies the Powerset Axiom.  With the same
+section, of proving that $\mathcal{M}[G]$ satisfies the Powerset Axiom.  With the same
 notation that was used there, suppose we now define z' as follows:
 
-  z' = {<q,r> : q is in dom(x) and r ||- "q is in z"}.
+  $$z' = \left\{<q,r> : q\text{ is in }dom(x)\text{ and }r \Vdash "q\text{ is in }z"\right\}.$$
 
 By definition, dom(z') is a subset of dom(x).  What is val(z',G)?  Well,
 this is determined by which "tags" are in G.  But note that by the
 definition of forcing, if r is in G, then val(q,G) is in val(z,G) = Z.
-Therefore, val(z',G) is a subset of Z.
+Therefore, $val(z',G)$ is a subset of Z.
 
-This is progress, but what we really want is for val(z',G) to be actually
-equal to Z, and this is not at all clear.  What we need in order to prove
-val(z',G) = Z is that for every Q in Z, there is a P-name q of Q in dom(x)
-and a P-name r in G such that r ||- "q is in z."  Finding a suitable q turns
-out not to be that hard, but the existence of r is not so clear; what we
-need is a theorem that for every statement \phi (such as "Q is in Z") that is
-actually true in \mathcal{M}[G] for a particular G, there is some element r of that
-particular G such that merely knowing that r is in G is enough to deduce
-that \phi is true of G.  This doesn't seem plausible.  In general, knowing
-just one element of G doesn't tell us very much about G.
+This is progress, but what we really want is for $val(z',G)$ to be actually
+equal to $Z$, and this is not at all clear.  What we need in order to prove
+$val(z',G) = Z$ is that for every $Q$ in $Z$, there is a $P$-name $q$ of $Q$ in $dom(x)$
+and a $P$-name $r$ in $G$ such that $r \Vdash$ "$q$ is in $z$".  Finding a suitable $q$ turns
+out not to be that hard, but the existence of $r$ is not so clear; what we
+need is a theorem that for every statement $\phi$ (such as "Q is in Z") that is
+actually true in $\mathcal{M}[G]$ for a particular G, there is some element r of that
+particular $G$ such that merely knowing that $r$ is in G is enough to deduce
+that $\phi$ is true of $G$.  This doesn't seem plausible.  In general, knowing
+just one element of $G$ doesn't tell us very much about G.
 
 However, we can fix this problem if we restrict G and P to have a certain
 structure, so that some elements r of G are "more informative" than others,
 i.e., knowing that r is in G tells us more about G than knowing that some
 other element p is in G.  The simplest way to achieve this is to impose a
 partial ordering < on P (with "1" being the unique maximal element) and to
-require G to be a \textbf{}filter}, i.e., for G to have the following two
+require G to be a \textbf{filter}, i.e., for G to have the following two
 properties:
 
 1. If r is in G and $r \leq p$ then $p$ is also in $G$.
@@ -470,9 +468,9 @@ some element r that is at least as informative as p and q put together.  If
 we are going to insist on looking at only single elements of G to get
 information about G, then this is clearly a useful condition to impose.
 
-If we now revise our definition of ||- by inserting the technical conditions
+If we now revise our definition of $\Vdash$ by inserting the technical conditions
 that P be a partially ordered set and G be a filter, then this gives us more
-hope of being able to find r in G such that r ||- "Q is in Z."
+hope of being able to find r in G such that $r \Vdash$ "Q is in Z."
 Unfortunately, even the condition of being a filter turns out not to be
 quite good enough.  Intuitively, the reason is that since $P$ may be infinite,
 there is no guarantee that, for an arbitrary statement $\phi$ that asserts
@@ -485,31 +483,31 @@ The following condition on G solves this problem.  Define a subset D of P
 to be "dense" if for every p in P there exists q in D such that q <= p.
 A filter G is "generic" if it intersects every dense subset.
 
-It can now be proved that if we require P to be a partially ordered set with
-unique maximal element 1 and we define "p ||- phi" to mean that for all
+It can now be proved that if we require $P$ to be a partially ordered set with
+unique maximal element 1 and we define "$p \Vdash \phi$" to mean that for all
 generic filters G in P, $\phi$ is true in $\mathcal{M}[G]$, then the following is true:
 
-Forcing Fact 1.  Fix a particular generic filter G of P.  Then for any phi
-that is true in $\mathcal{M}[G]$, there exists r in G such that r ||- phi.
+Forcing Fact 1.  Fix a particular generic filter G of P.  Then for any $\phi$
+that is true in $\mathcal{M}[G]$, there exists r in G such that $r \Vdash \phi$.
 
 If we now go back to our attempt to prove the Powerset Axiom, we see that
-Forcing Fact 1 is just what we need to prove that val(z',G) = Z.  The only
-thing left to prove is that z' is actually in M.  For this, one needs the
+Forcing Fact 1 is just what we need to prove that $val(z',G) = Z$.  The only
+thing left to prove is that z' is actually in $\mathcal M$.  For this, one needs the
 following:
 
-Forcing Fact 2.  ||- is definable in M.
+Forcing Fact 2.  $\Vdash$ is definable in $\mathcal M$.
 
 I won't say precisely what Forcing Fact 2 means, but intuitively it asserts
 that even when we add the side conditions (partial order, generic filter),
-the definition of ||- is still sufficiently "general" that it does not
+the definition of $\Vdash$ is still sufficiently "general" that it does not
 require any specific knowledge of $G$; therefore, sets like z' that are
-defined using ||- still lie inside $\mathcal{M}$.
+defined using $\Vdash$ still lie inside $\mathcal{M}$.
 
-Proving Forcing Facts 1 and 2 is not easy, even after all the above
+Proving Forcing Facts $1$ and $2$ is not easy, even after all the above
 definitions (which themselves are not easy to come up with!) have been
 provided.  Here I must refer you to a Kunen's book for details.  The work
 required to prove them, however, pays off great dividends.  Not only
-Powerset, but all the other axioms of ZFC, can be proved to be true in \mathcal{M}[G],
+Powerset, but all the other axioms of ZFC, can be proved to be true in $\mathcal{M}[G]$,
 using just the two Forcing Facts (without ever having to delve into the
 proof of the Facts themselves), and following a similar pattern to our proof
 of Powerset.  The Fundamental Theorem is therefore proved!  For convenience,
@@ -536,11 +534,11 @@ functions" from $k x \omega$ into $2$, i.e., functions from a finite subset of $
 x \omega$ into $2$.  Partially order these functions by reverse inclusion, i.e.,
 $f \leq g$ if the set of all ordered pairs in $g$ is contained in the set of all
 ordered pairs of $f$.  Now it is not hard to see that for each $y$ in $k x \omega$,
-the set D_y of all elements of P that are defined on y (i.e., that include y
+the set $D_y$ of all elements of $P$ that are defined on $y$ (i.e., that include $y$
 as part of their domain) is dense.  Therefore, if $G$ is a generic filter in
 P, G must intersect every such $D_y$, and the union of all the elements of $G$
 will be a \textbf{total} function from $k x \omega$ to $2$.  The Fundamental Theorem
-tells us that we can successfully "insert" this "missing" function into \mathcal{M} if
+tells us that we can successfully "insert" this "missing" function into $\mathcal{M}$ if
 it wasn't there already.  Furthermore, the fact that G is generic gives us
 automatically, as a bonus, the fact that each of the k functions from $\omega$
 to $2$ are distinct!  (See if you can prove this, by constructing a suitable
@@ -560,36 +558,36 @@ The second point is more substantial.  It is conceivable to me that
 Cohen could have devised forcing, proved the Fundamental Theorem, and
 still failed to prove anything new about the continuum hypothesis!  The
 reason is that nothing in the general framework of forcing guarantees
-that in $\mathcal{M}[G]$, the cardinal k will still equal $\omega_2$.  Being a
+that in $\mathcal{M}[G]$, the cardinal $k$ will still equal $\omega_2$.  Being a
 cardinal is not an absolute property, so large cardinals can "collapse"
 into lower ordinals when you pass to $\mathcal{M}[G]$.  The reason is that the
 auxiliary sets in $\mathcal{M}[G]$ might include a bijection between k and a
 smaller cardinal.  Luckily for Cohen, though, it can be proved that
-cardinal collapse does not occur for the particular P described above.
+cardinal collapse does not occur for the particular $P$ described above.
 See Kunen for details.
 
 
 \section{Epilogue}
 
 One reason I'm still not totally happy with this exposition is that the
-definitions "p ||- phi" and "G is a generic filter" still seem to be pulled
+definitions "$p \Vdash \phi$" and "$G$ is a generic filter" still seem to be pulled
 out of a hat, even though one can get some a posteriori intuition about
 why each part of the definition is important.  There do exist alternative
 approaches to forcing, e.g., using "Boolean-valued models."  This is
 somewhat more intuitive because the idea that some statements require
-more "particular information about G" to be decided is encoded "directly",
+more "particular information about $G$" to be decided is encoded "directly",
 i.e., we take the set of all statements and impose a partial order on this
 set.  The concept of a generic filter becomes simpler (essentially, it
 becomes an "ultrafilter" in a complete Boolean algebra).  However, with
 this approach one needs to hit on the idea of embedding partial orders in
 a complete Boolean algebra; I'm not sure how to motivate this.  Question
-for the logicians: are there nice applications of forcing where P is a
+for the logicians: are there nice applications of forcing where $P$ is a
 complete Boolean algebra and no embedding is involved?
 
 Another question for the logicians: Say we drop the word "generic" from
 the definition of forcing, and we say that "$p$ pseudoforces $\phi$" if for
 every filter $G$ in $P$, $p$ being in $G$ implies that $\phi$ is true in $\mathcal{M}[G]$.  Is
-pseudoforcing definable in $\mathcal{M}?  At first I thought it might be, because it
+pseudoforcing definable in $\mathcal{M}$?  At first I thought it might be, because it
 doesn't seem that one needs to know anything about any particular $G$ to
 decide whether $p$ pseudoforces $\phi$, but Andreas Blass thinks the answer is
 probably no.
