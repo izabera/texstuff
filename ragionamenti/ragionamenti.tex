@@ -1,0 +1,49 @@
+\documentclass[10pt]{article}
+%\usepackage{fontspec}
+\usepackage{amssymb, amsfonts, amsmath, amsthm}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+
+\newcommand\rea{\mathbb R}
+\newcommand\nat{\mathbb N}
+\newcommand\ins[1]{\mathbf #1}
+\newcommand\inte[3]{\int\limits_{#1}^{#2}\!#3\text dx}
+\newcommand\intex[3]{\int\limits_{#1}^{#2}\!#3(x)\text dx}
+\newcommand\intes[2]{\int\limits_{#1}\!#2\text dx}
+\newcommand\intesx[2]{\int\limits_{#1}\!#2(x)\text dx}
+
+\newtheorem*{prop*}{Proposizione}
+\newtheorem{prop}{Proposizione}
+\newtheorem{teo}{Teorema}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{defn}{Definizione}
+\newtheorem{esem}{Esempio}
+\newenvironment{dafinire}{\hrulefill}{\hrulefill}
+
+%\setmainfont[Ligatures=TeX]{Linux Libertine O}
+%\setdefaultlanguage{italian}
+
+\title{Ragionamenti}
+\author{Isabella Bosia}
+\date{}
+
+\begin{document}
+\maketitle
+
+Digressioni varie su argomenti interessosi.
+
+\section{Filtri e ultrafiltri}
+
+\subsection{FIP e non oltre}
+
+Sia $\mathcal F$ un ultrafiltro che estende il filtro cofinito. Abbiamo che $\mathcal F$ contiene il complementare di ogni singoletto, quindi l'intersezione di tutti gli insiemi di $\mathcal F$ è vuota.
+
+\subsection{Assioma della scelta?}
+
+Sia $\mathcal F$ un filtro non principale su $\mathcal M$. Possiamo trovare una catena di filtri che contengono $\mathcal F$ e per il lemma di Zorn la catena ha un massimale, che è un ultrafiltro che estende $\mathcal F$. Si dimostra che l'esistenza di un ultrafiltro non principale non può essere provata senza l'assioma della scelta.
+
+Procediamo in un altro modo: al posto che estendere il filtro verso l'alto, riduciamo l'insieme verso il basso. Preso $\mathcal F$, consideriamo l'insieme dei complementari $\mathcal G=\{x\in\mathcal M:x^c\in\mathcal F\}$. Ora $\mathcal F$ è un ultrafiltro su $\mathcal F\cup\mathcal G$, e continua ad essere non principale(?) Dov'è stato usato l'assioma della scelta?
+\end{document}
