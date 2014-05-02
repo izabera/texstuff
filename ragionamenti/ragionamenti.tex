@@ -35,15 +35,47 @@
 
 Digressioni varie su argomenti interessosi.
 
-\section{Filtri e ultrafiltri}
+\section{Gioco di Banach-Mazur}
 
-\subsection{FIP e non oltre}
+Il giocatore $g_1$ sceglie un insieme $A$ contenuto in $X_0=[a,b]\subseteq\mathbb R$, il giocatore $g_2$ sceglie il complementare di $A$ in $[a,b]$.
 
-Sia $\mathcal F$ un ultrafiltro che estende il filtro cofinito. Abbiamo che $\mathcal F$ contiene il complementare di ogni singoletto, quindi l'intersezione di tutti gli insiemi di $\mathcal F$ è vuota.
+Poi $g_1$ sceglie un intervallo chiuso $X_1$ dentro $[a,b]$, poi $g_2$ un intervallo chiuso $X_2$ dentro $X_1$, eccetera...
+Giocando per $\omega$ turni, i chiusi incapsulati convergono a un insieme $X_\infty$. Se $X_\infty\cap A\neq\emptyset$, vince $g_1$, sennò vince $g_2$.
 
-\subsection{Assioma della scelta?}
+La domanda è: per quali insiemi $A$ esiste una strategia vincente per $g_1$ o $g_2$?
+E la risposta è: esiste una strategia se $A$ ha la proprietà di Baire.
 
-Sia $\mathcal F$ un filtro non principale su $\mathcal M$. Possiamo trovare una catena di filtri che contengono $\mathcal F$ e per il lemma di Zorn la catena ha un massimale, che è un ultrafiltro che estende $\mathcal F$. Si dimostra che l'esistenza di un ultrafiltro non principale non può essere provata senza l'assioma della scelta.
+\subsection{Variante}
 
-Procediamo in un altro modo: al posto che estendere il filtro verso l'alto, riduciamo l'insieme verso il basso. Preso $\mathcal F$, consideriamo l'insieme dei complementari $\mathcal G=\{x\in\mathcal M:x^c\in\mathcal F\}$. Ora $\mathcal F$ è un ultrafiltro su $\mathcal F\cup\mathcal G$, e continua ad essere non principale(?) Dov'è stato usato l'assioma della scelta?
+Il giocatore $g_1$ sceglie un insieme $A$ in $X_0=[0,1]$ e $g_2$ il complementare.
+Poi $g_1$ divide $[0,1]$ nei due intervalli $\left[0,\frac12\right]$ e $\left[\frac12,1\right]$, scegliendo $X_1$ tra uno dei due.
+Poi $g_2$ divide $X_1$ in due intervalli e ne sceglie uno... e così via.
+Dopo $\omega$ passi, la sequenza converge a un chiuso, se ha un punto in comune con l'insieme $A$ vince $g_1$, sennò vince $g_2$.
+
+La domanda è come prima: quali insiemi si possono scegliere per fare in modo che esista una strategia per uno dei due giocatori?
+Naturalmente se hanno la proprietà di Baire è tutto ok.
+
+L'assioma di determinatezza implica tante belle cose, tra cui che ogni sottoinsieme di $\mathbb R$ è misurabile e ha la proprietà di Baire, che per ogni famigila numerabile di insiemi non vuoti di $\mathbb R$ esiste una funzione di scelta... e che l'assioma della scelta non vale.
+
+Quindi, senza assumere la determinatezza, si può dire che per ogni possibile insieme che $g1$ può scegliere esiste una strategia vincente per $g_1$ o $g_2$?
+Se sì, come? Se no, assumendo la scelta, c'è un controesempio?
+
+\subsection{Seconda variante}
+
+Il giocatore $g_1$ sceglie un insieme $A$ in $X_0=[0,1]$ e $g_2$ il complementare.
+Poi $g_1$ divide $[0,1]$ nei quattro intervalli $\left[0,\frac14\right]$ , $\left[\frac14,\frac12\right]$ , $\left[\frac12,\frac34\right]$ e $\left[\frac34,1\right]$, ma non può scegliere i due intervalli esterni, deve scegliere $X_1$ per forza tra $\left[\frac14,\frac12\right]$ e $\left[\frac12,\frac34\right]$.
+Poi $g_2$ divide $X_1$ in 4 parti e sceglie una delle due centrali... e così via.
+Dopo $\omega$ passi, la sequenza converge a un insieme, se ha un punto in comune con $A$ vince $g_1$, sennò vince $g_2$.
+
+La domanda è sempre: quali insiemi si possono scegliere per fare in modo che esista una strategia per uno dei due? Solo che questa volta ci sono dei "buchi", quindi se ad esempio un insieme $X\subseteq\left[\frac14,\frac34\right]$ ha la proprietà di Baire e $Y\subseteq\left(\frac34,1\right)$ no, allora anche scegliendo $X\cup Y$ esiste una strategia vincente per uno dei due giocatori.
+
+Se $X$ è un insieme di Bernstein, non ha la proprietà di Baire e nessuno dei due ha una strategia vincente. Se $X$ non è di Bernstein invece?
+
+\begin{thebibliography}{1}
+\bibitem{MC}Marianna Cs\"ornye, \emph{Measure and Category - Lecture notes} \\
+\texttt{http://www.ltcc.ac.uk/courses/Measure\%20and\%20Category/mc.pdf}
+\bibitem{oxtoby}John C. Oxtoby, \emph{Measure and Category} \\
+\texttt{http://math.rice.edu/{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}michael/teaching/426\_Spr14/Banach\_Mazur.pdf}
+\end{thebibliography}
+
 \end{document}
