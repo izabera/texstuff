@@ -1,4 +1,4 @@
-\documentclass[11pt]{scrbook}
+\documentclass[11pt]{scrreprt}
 
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{Adobe Caslon Pro}
@@ -11,6 +11,8 @@
 
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.png}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
 
 \title{Il piccolo principe}
 \author{Antoine de Saint-Exupéry}
@@ -23,6 +25,26 @@
 \begin{center}
 \includegraphics{img/chapter1}
 \end{center}
+
+\definecolor{orchid}{rgb}{0.85, 0.44, 0.84}
+
+\newcommand{\tstar}[5]{% inner radius, outer radius, tips, rot angle, options
+\pgfmathsetmacro{\starangle}{360/#3}
+\draw[#5] (#4:#1)
+\foreach \x in {1,...,#3}
+{ -- (#4+\x*\starangle-\starangle/2:#2) -- (#4+\x*\starangle:#1)
+}
+-- cycle;
+}
+
+
+\begin{tikzpicture}
+\draw [fill=orchid] (1,1) circle [radius=1];
+%\tstar{1}{1}{5}{10}{thick,fill=blue}
+%\node[draw, fill=red, star,star points=5] at (2,2) {};
+%\filldraw[pattern=stars,pattern color=red](0,0)rectangle(2,2);
+\node [orange, opacity=0.7] at (0.7,1.5) {\scalebox{7}{\sf \thechapter}};
+\end{tikzpicture}
 
 Un tempo lontano, quando avevo sei anni, in un libro sulle foreste primordiali, intitolato \emph{Storie vissute della natura}, vidi un magnifico disegno. Rappresentava un serpente boa nell'atto di inghiottire un animale. Eccovi la copia del disegno.
 
@@ -101,7 +123,7 @@ Feci un altro disegno.
 
 Il mio amico mi sorrise gentilmente, con indulgenza. ``Lo puoi vedere da te'', disse, ``che questa non è una pecora. È un ariete. Ha le corna''. Rifeci il disegno una terza volta, ma fu rifiutato come i tre precedenti.``Questa è troppo vecchia. Voglio una pecora che possa vivere a lungo''.
 
-Questa volta la mia pazienza era esaurita, avevo fretta di rimettere a posto il mio motore. Buttai giu un quarto disegno. E tirai fuori questa spiegazione: ``Questa e soltanto la sua cassetta. La pecora che volevi sta dentro''. Fui molto sorpreso di vedere il viso del mio piccolo giudice illuminarsi:
+Questa volta la mia pazienza era esaurita, avevo fretta di rimettere a posto il mio motore. Buttai giu un quarto disegno. E tirai fuori questa spiegazione: ``Questa è soltanto la sua cassetta. La pecora che volevi sta dentro''. Fui molto sorpreso di vedere il viso del mio piccolo giudice illuminarsi:
 
 \begin{center}
 \includegraphics{img/2e}
@@ -117,7 +139,7 @@ Questa volta la mia pazienza era esaurita, avevo fretta di rimettere a posto il 
 
 Si chinò sul disegno:
 
-``Non così piccola che --- oh guarda! --- si è messa a dormire\ldots{}
+``Non così piccola che --- oh guarda! --- si è messa a dormire\ldots{}''
 
 E fu così che feci la conoscenza del piccolo principe.
 
@@ -128,7 +150,7 @@ E fu così che feci la conoscenza del piccolo principe.
 
 Ci misi molto prima di capire da dove venisse. Il piccolo principe, che mi faceva una domanda dopo l'altra, parava che non sentisse mai le mie.
 
-Sono state le parole dette per caso, che poco a poco, mi hanno rivelato tutto. Così, quando vide per la prima volta il mio aeroplano (non lo disegnero perché sarebbe troppo complicato per me), mi domandò:
+Sono state le parole dette per caso, che poco a poco, mi hanno rivelato tutto. Così, quando vide per la prima volta il mio aeroplano (non lo disegnerò perché sarebbe troppo complicato per me), mi domandò:
 
 ``Che cos'è questa cosa?''
 
@@ -172,7 +194,7 @@ Mi rispose dopo un silenzio meditativo: ``Quello che c'è di buono, e che la cas
 
 ``Certo. E se sei buono ti darò pure una corda per legare la pecora durante il giorno. E un paletto''
 
-La mia proposta scandalizzo il piccolo principe.
+La mia proposta scandalizzò il piccolo principe.
 
 ``Legarla? Che buffa idea!''
 
@@ -242,11 +264,11 @@ Per coloro che comprendono la vita, sarebbe stato molto più vero. Perché non m
 \includegraphics{img/chapter5}
 \end{center}
 
-Ogni giorno imparavo qualche cosa sul pianeta, sulla partenza sul viaggio. Veniva da sé, per qualche riflessione.
+Ogni giorno imparavo qualche cosa sul pianeta, sulla partenza, sul viaggio. Veniva da sé, per qualche riflessione.
 
 Fu così che al terzo giorno conobbi il dramma dei baobab.
 
-Anche questa volta fu merito della pecora, perché bruscamete il piccolo principe mi interrogò, come preso da un grave dubbio:
+Anche questa volta fu merito della pecora, perché bruscamente il piccolo principe mi interrogò, come preso da un grave dubbio:
 
 ``È proprio vero che le pecore mangiano gli arbusti?''
 
