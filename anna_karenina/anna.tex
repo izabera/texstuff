@@ -2,6 +2,8 @@
 % arara: lualatex: { synctex: yes }
 \documentclass{scrbook}
 \usepackage{comment}
+\usepackage{luacode}
+\usepackage{lettrine}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{italian}
@@ -18,6 +20,103 @@
 \author{Lev Tolstoj}
 \date{}
 
+
+
+
+\def\mylettrine#1 {
+\luaexec{
+lettersmatrix = {
+A = {'A','À','Á','Â','Ã','Ä','Å','Ā','Ă','Ą','Ǻ','Ȁ','Ạ','Ả','Ấ','Ầ','Ẩ','Ẫ','Ậ','Ắ','Ằ','Ẳ','Ặ','Α'},
+B = {'B','฿','Β'},
+C = {'C','Ç','Ć','Ĉ','Ċ','Č'},
+D = {'D','Ð','Ď','Đ','Ḍ','Ḏ'},
+E = {'E','È','É','Ê','Ë','Ē','Ĕ','Ė','Ę','Ě','Ȅ','Ẹ','Ẻ','Ẽ','Ề','Ế','Ễ','Ể','Ệ','Ε','Ǽ'},
+F = {'F'},
+G = {'G','Ĝ','Ğ','Ġ','Ģ','Ǧ','Ǵ'},
+H = {'H','Ĥ','Ħ','Ḥ','Ḧ','Ḫ','Η'},
+I = {'I','Ì','Í','Î','Ï','Ĩ','Ī','Ĭ','Į','İ','Ȉ','Ỉ','Ị','Ι'},
+J = {'J','Ĵ'},
+K = {'K','Ķ','Κ'},
+L = {'L','Ĺ','Ļ','Ł','Ḷ'},
+M = {'M','Μ'},
+N = {'N','Ñ','Ń','Ņ','Ň','Ṅ','Ṇ','Ν'},
+O = {'O','Ò','Ó','Ô','Õ','Ö','Ø','Ō','Ŏ','Ő','Ọ','Ơ','Ǫ','Ǿ','Ȍ','Ỏ','Ố','Ồ','Ổ','Ỗ','Ộ','Ớ','Ờ','Ỡ','Ở','Ợ','Ο'},
+P = {'P','Ρ'},
+Q = {'Q'},
+R = {'R','Ŕ','Ŗ','Ř','Ȑ','Ṛ','Ṙ','Ṝ'},
+S = {'S','Ś','Ŝ','Ş','Š','Ș','Ṣ'},
+T = {'T','Ţ','Ť','Ț','Ṭ','Ṯ','Τ'},
+U = {'U','Ù','Ú','Û','Ü','Ũ','Ū','Ŭ','Ů','Ű','Ų','Ư','Ȕ','Ụ','Ủ','Ứ','Ừ','Ử','Ữ','Ự'},
+V = {'V'},
+W = {'W','Ŵ','Ẁ','Ẃ','Ẅ'},
+X = {'X','Χ'},
+Y = {'Y','Ý','Ŷ','Ÿ','Ỵ','Ỷ','Ỹ'},
+Z = {'Z','Ź','Ż','Ž','Ẓ','Ζ'}
+}
+function find_letter (letter_to_find)
+  for key, value in pairs(lettersmatrix) do
+    for seckey, secvalue in pairs(lettersmatrix[key]) do
+      if secvalue == letter_to_find then
+	    return key, seckey
+      end
+    end
+  end
+end
+function firstLetter(str)
+  return unicode["utf8"].sub(str,1,1)
+end
+function lastLetters(str)
+  return unicode["utf8"].sub(str,2)
+end
+param='\luatexluaescapestring{#1}'
+ante=''
+while unicode["utf8"].sub(param,1,1)=='`' do
+  temp=unicode["utf8"].sub(param,1,1)
+  ante=ante..temp
+  param=unicode["utf8"].sub(param,2)
+end
+while unicode["utf8"].sub(param,1,1)=='-' do
+  temp=unicode["utf8"].sub(param,1,1)
+  ante=ante..temp
+  param=unicode["utf8"].sub(param,2)
+end
+lettrine=firstLetter(param)
+alltherest=lastLetters(param)
+key,_=find_letter(lettrine)
+valuesmatrix = {
+A = {'1','7pt','-5pt','0'},
+B = {'1','0pt','0pt','0'},
+C = {'1','0pt','0pt','0'},
+D = {'1','-3pt','0pt','0'},
+E = {'1','0pt','0pt','0'},
+F = {'1','-2pt','-3pt','0'},
+G = {'1','0pt','0pt','0'},
+H = {'1','2pt','-2pt','0'},
+I = {'1','2pt','-2pt','0'},
+J = {'0.7','0pt','-2pt','0.4'},
+K = {'1','7pt','-5pt','0'},
+L = {'1','0pt','0pt','0'},
+M = {'1','2pt','-2pt','0'},
+N = {'1','0pt','-2pt','0'},
+O = {'1','-3pt','0pt','0'},
+P = {'1','-4pt','0pt','0'},
+Q = {'0.7','16pt','-1pt','0.5'},
+R = {'1','5pt','-3pt','0'},
+S = {'1','0pt','0pt','0'},
+T = {'1','0pt','-6pt','0'},
+U = {'1','0pt','-2pt','0'},
+V = {'1','-4pt','-4pt','0'},
+W = {'1','-4pt','-3pt','0'},
+X = {'1','7pt','-5pt','0'},
+Y = {'1','-1pt','-4pt','0'},
+Z = {'1','2pt','-2pt','0'}
+}
+tex.sprint("\string\\lettrine[ante="..ante..",loversize="..valuesmatrix[key][1]..",nindent="..valuesmatrix[key][2]..",findent="..valuesmatrix[key][3]..",lraise="..valuesmatrix[key][4].."]{"..lettrine.."}{"..alltherest.."} ")
+}}
+
+
+
+
 \newcommand{\parte}[1]{%
 \null\cleardoubleevenemptypage\cleardoubleoddemptypage%
 \def\nomeparte{#1}{\vspace*{\fill}\begin{center}%
@@ -25,11 +124,11 @@
 \end{center}\vspace*{\fill}}\thispagestyle{empty}%
 \addcontentsline{toc}{chapter}{\protect\numberline{}#1}\cleardoubleoddemptypage}
 
-\newcommand{\capitolo}[1]{\cleardoubleoddemptypage%
+\newcommand{\capitolo}[1]{\clearpage%\cleardoubleoddemptypage non serve
 \def\nomecapitolo{#1}{\vspace*{3em plus 0.5\baselineskip minus 0.5\baselineskip}%
 \color{rosso}\sffamily\Huge\bfseries#1%
 \vspace*{5em plus .5\baselineskip minus .5\baselineskip}}%
-\addcontentsline{toc}{section}{\protect\numberline{}#1}}
+\addcontentsline{toc}{section}{\protect\numberline{}#1}\par\mylettrine}
 
 \usepackage{scrpage2}
 \defpagestyle{pagina}{%
@@ -41,38 +140,6 @@
 {\hfill\pagemark}%
 {}%
 }
-
-
-
-
-
-\def\firstline{\begingroup\Firstlinefont
-  \def\zzz{}\dimen0 0pt
-  \x}
-\def\x{\afterassignment\y\z}
-\def\z#1 {\xdef\zz{#1\ }}
-\def\y{\setbox0=\hbox{\zz}
-  \advance\dimen0 by \wd0
-  \ifdim\dimen0<\hsize\let\next=\x
-  \edef\zzz{\zzz\zz}
-  \else\let\next=\endgroup
-  \zzz\aftergroup\zz
-  \fi
-  \next}
-\def\oldy{\setbox0=\hbox{\zz}
-  \advance\dimen0 by\wd0
-  \ifdim\dimen0<\hsize\let\next=\x
-  \edef\zzz{\zzz\zz}
-  \else\let\next=\endgroup
-  \zzz\aftergroup\zz
-  \fi
-  \next}
-
-\let\Firstlinefont=\scshape
-
-
-
-
 
 \usepackage{hologo}
 \usepackage{geometry}
@@ -92,8 +159,7 @@
 %\titlespacing*{\part}{0pt}{\fill}{\fill}
 
 \usepackage{transparent}
-\usepackage{lettrine}
-\renewcommand{\LettrineFontHook}{\color{rosso}\transparent{0.5}}
+\renewcommand{\LettrineFontHook}{\color{rosso}\transparent{0.8}}
 
 \begin{document}
 
@@ -126,7 +192,6 @@
 \cleardoublepage
 \thispagestyle{empty}
 \tableofcontents
-\cleardoublepage
 
 %\fi%%%%%%%%%%%%%%%%%%%%%
 %\iffalse%%%%%%%%%%%%%%%%%
