@@ -1,7 +1,6 @@
 % arara: lualatex
 % arara: lualatex: { synctex: yes }
 \documentclass{scrbook}
-\usepackage{comment}
 \usepackage{luacode}
 \usepackage{lettrine}
 \usepackage{fontspec}
@@ -9,6 +8,9 @@
 \setmainlanguage{italian}
 \setmainfont[Ligatures=TeX,Numbers=OldStyle]{Adobe Caslon Pro}
 \setsansfont[Ligatures=TeX,Numbers=OldStyle]{Gill Sans MT}
+\usepackage{tikz}
+\usepackage{ifoddpage}
+
 
 \usepackage[all]{nowidow}
 %\usepackage[draft,rivers,hyphenation,parindent,lastparline,nosingleletter,homeoarchy]{impnattypo}
@@ -20,8 +22,22 @@
 \author{Lev Tolstoj}
 \date{}
 
-
-
+\newcommand\chapterdecoration{%
+\begin{tikzpicture}[remember picture,overlay]
+\checkoddpage
+\ifoddpage
+\begin{scope}[yscale=-1,xscale=1]
+\node [yshift=-1.2cm,xshift=-3.5cm,rotate=20] at (current page.north east) {\includegraphics{fancychapter2.pdf}};
+\end{scope}
+\node [yshift=-3.2cm,xshift=-1.5cm,rotate=110] at (current page.north east) {\includegraphics{fancychapter2.pdf}};
+\else
+\begin{scope}[yscale=-1,xscale=1]
+\node [yshift=-1.2cm,xshift=3.5cm,rotate=340] at (current page.north west) {\includegraphics{fancychapter.pdf}};
+\end{scope}
+\node [yshift=-3.2cm,xshift=1.5cm,rotate=250] at (current page.north west) {\includegraphics{fancychapter.pdf}};
+\fi
+\end{tikzpicture}%
+}
 
 \def\mylettrine#1 {
 \luaexec{
@@ -128,7 +144,7 @@ tex.sprint("\string\\lettrine[ante="..ante..",loversize="..valuesmatrix[key][1].
 \def\nomecapitolo{#1}{\vspace*{3em plus 0.5\baselineskip minus 0.5\baselineskip}%
 \color{rosso}\sffamily\Huge\bfseries#1%
 \vspace*{5em plus .5\baselineskip minus .5\baselineskip}}%
-\addcontentsline{toc}{section}{\protect\numberline{}#1}\par\mylettrine}
+\addcontentsline{toc}{section}{\protect\numberline{}#1}\par\chapterdecoration\mylettrine}
 
 \usepackage{scrpage2}
 \defpagestyle{pagina}{%
@@ -159,7 +175,7 @@ tex.sprint("\string\\lettrine[ante="..ante..",loversize="..valuesmatrix[key][1].
 %\titlespacing*{\part}{0pt}{\fill}{\fill}
 
 \usepackage{transparent}
-\renewcommand{\LettrineFontHook}{\color{rosso}\transparent{0.8}}
+\renewcommand{\LettrineFontHook}{\color{rosso}}%\transparent{0.8}
 
 \begin{document}
 
